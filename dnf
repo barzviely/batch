@@ -1,0 +1,18 @@
+# Update system packages
+sudo dnf update -y
+
+# Install Python and dependencies
+sudo dnf install -y python3 python3-pip wget tar xz
+
+# Install required Python packages
+pip3 install boto3 watchtower
+
+# Install FFmpeg
+wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
+tar xf ffmpeg-release-amd64-static.tar.xz
+sudo mv ffmpeg-*-static/ffmpeg /usr/local/bin/
+sudo mv ffmpeg-*-static/ffprobe /usr/local/bin/
+rm -rf ffmpeg-*
+
+# Create working directory
+mkdir -p ~/video-processor
